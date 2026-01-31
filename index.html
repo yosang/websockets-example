@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Websockets Example</title>
+  </head>
+  <body>
+    <p id="status"></p>
+    <input id="text" type="text" placeholder="Enter text..." />
+    <button id="sendBtn">Send</button>
+    <div id="root"></div>
+    <script>
+      const ws = new WebSocket("ws://localhost:5000");
+      const btn = document.getElementById("sendBtn");
+      const status = document.getElementById("status");
+      const root = document.getElementById("root");
+
+      btn.addEventListener("click", () => {
+        const input = document.getElementById("text");
+        const value = input.value;
+
+        ws.send(value);
+
+        input.value = "";
+      });
+
+      // An alternative to addEventListener is ws.onmessage
+      ws.addEventListener("message", (msg) => {
+        const newMessage = document.createElement("p");
+        newMessage.textContent = msg.data;
+        root.appendChild(newMessage);
+      });
+    </script>
+  </body>
+</html>

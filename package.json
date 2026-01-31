@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "serve": "^14.2.5",
+    "ws": "^8.19.0"
+  },
+  "scripts": {
+    "start": "concurrently 'serve .' 'node server.js'"
+  }
+}
