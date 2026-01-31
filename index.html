@@ -30,9 +30,9 @@
       // The received object contains many things
       // The data sent is in the property data
       // An alternative to addEventListener is ws.onmessage
-      ws.addEventListener("message", (msg) => {
+      ws.addEventListener("message", (event) => {
         const newMessage = document.createElement("p");
-        newMessage.textContent = msg.data;
+        newMessage.textContent = event.data;
         root.appendChild(newMessage);
       });
 
