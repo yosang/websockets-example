@@ -35,6 +35,14 @@
         newMessage.textContent = msg.data;
         root.appendChild(newMessage);
       });
+
+      ws.addEventListener("open", () => {
+        console.log("Connected");
+      });
+
+      ws.addEventListener("close", () => {
+        console.log("Disconnected");
+      });
     </script>
   </body>
 </html>
